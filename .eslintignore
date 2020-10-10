@@ -1,0 +1,4 @@
+.gatsby/**/*
+public
+.catche/**/*
+node_modules
