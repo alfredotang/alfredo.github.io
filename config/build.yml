@@ -1,0 +1,39 @@
+# ----------- build -------------
+# 站台資訊
+# 異動這裡檔案需要重下 npm start
+# -------------------------------
+
+# Description: 站台 build time path
+sourcePath:
+    # Description: 圖片、pdf、md 資源路徑
+    # Required: True
+    # Note: 異動這裡也需要更改 content folder 名稱
+    content: /content
+
+# Description: 站台 meta data
+# Required: True
+siteMetadata:
+    title: Alfredo Blog
+    description: Alfredo Blog
+    author: Alfredo Tang
+
+# Description: 部署 config
+# Required: True
+deploy:
+    site_name: alfredo.github.io
+    short_name: Afu blog
+    # Description: production site url
+    # Require: True
+    site_url: ''
+    repo_url: https://github.com/alfredotang/alfredo.github.io
+    # Note: site_url 改變這裡頁要異動
+    repo_name: GitLab
+    # Description: 站台從這個路徑開始
+    # Default: /
+    # Require: True
+    #path_prefix: techblog
+    path_prefix: /
+    # Description: 網站 icon
+    site_icon: /
+    version: 'v0.1.0'
+    buildTimeFormat: 'YYYY/MM/DD HH:mm'

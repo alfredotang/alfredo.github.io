@@ -5,8 +5,8 @@
  */
 
 import React from 'react';
-// import { GlobalProvider } from '../src/provider';
+import { GlobalProvider } from '../src/provider';
 
-// export const wrapRootElement = ({ element }) => {
-//     return <GlobalProvider>{element}</GlobalProvider>;
-// };
+export const wrapRootElement = ({ element }) => {
+    return <GlobalProvider>{element}</GlobalProvider>;
+};

@@ -2,3 +2,4 @@
 public
 .catche/**/*
 node_modules
+gatsby-config.js
