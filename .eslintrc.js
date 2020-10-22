@@ -24,5 +24,6 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error', // 檢查 Hook 的規則
         'react-hooks/exhaustive-deps': 'warn', // 檢查 effect 的相依性
         'no-console': 'warn',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
     },
 };

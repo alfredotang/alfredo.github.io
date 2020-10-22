@@ -20,6 +20,7 @@ export default {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         `gatsby-plugin-typescript`,
+        `gatsby-plugin-fontawesome-css`,
         // {
         //     resolve: `gatsby-plugin-manifest`,
         //     options: {
@@ -34,9 +35,18 @@ export default {
         //     },
         // },
         {
-            resolve: `gatsby-transformer-remark`,
+            resolve: `gatsby-plugin-material-ui`,
             options: {
-                plugins: [`gatsby-remark-images`, `gatsby-remark-autolink-headers`],
+                stylesProvider: {
+                    injectFirst: true,
+                },
+            },
+        },
+        {
+            resolve: `gatsby-plugin-mdx`,
+            options: {
+                extensions: [`.mdx`, `.md`],
+                gatsbyRemarkPlugins: [`gatsby-remark-images`, `gatsby-remark-autolink-headers`],
             },
         },
         {

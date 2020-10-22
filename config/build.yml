@@ -27,7 +27,7 @@ deploy:
     site_url: ''
     repo_url: https://github.com/alfredotang/alfredo.github.io
     # Note: site_url 改變這裡頁要異動
-    repo_name: GitLab
+    repo_name: alfredo.github.io
     # Description: 站台從這個路徑開始
     # Default: /
     # Require: True
