@@ -36,4 +36,3 @@ deploy:
     # Description: 網站 icon
     site_icon: /
     version: 'v0.1.0'
-    buildTimeFormat: 'YYYY/MM/DD HH:mm'

@@ -20,8 +20,17 @@
             "@src/*": [
                 "./src/*"
             ],
+            "@components": [
+                "./src/components"
+            ],
             "@theme": [
                 "./src/theme"
+            ],
+            "@util": [
+                "./src/util"
+            ],
+            "@provider": [
+                "./src/provider"
             ],
         },
         "typeRoots": [

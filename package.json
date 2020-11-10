@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "npm run check:ts && npm run clean && GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --prefix-paths",
-    "develop": "gatsby develop",
+    "develop": "npm run check:ts && gatsby develop -- --https",
     "start": "npm run check:ts && npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
@@ -77,6 +77,7 @@
     "gatsby-plugin-tsconfig-paths": "^1.0.2",
     "gatsby-plugin-typescript": "^2.4.21",
     "prettier": "^2.1.2",
+    "shx": "^0.3.3",
     "typescript": "^4.0.3"
   }
 }

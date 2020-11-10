@@ -2,9 +2,7 @@ import { resolve } from 'path';
 import appRootPath from 'app-root-path';
 import YAML from 'yamljs';
 const configPath = resolve(`${appRootPath}/config/build.yml`);
-const themeConfigPath = resolve(`${appRootPath}/config/theme.yml`);
 const config = YAML.load(configPath);
-const themeConfig = YAML.load(themeConfigPath);
 
 export default {
     pathPrefix: `${config.deploy.path_prefix}`,

@@ -26,13 +26,6 @@ const SEO: FC<IProps> = (props) => {
                         }
                     }
                 }
-                allImageSharp(filter: { fluid: { originalName: { eq: "91APPLogo.jpg" } } }) {
-                    nodes {
-                        fluid {
-                            src
-                        }
-                    }
-                }
             }
         `
     );
@@ -62,72 +55,52 @@ const SEO: FC<IProps> = (props) => {
         return new URL(slug, siteUrl);
     };
 
+    // {
+    //     property: `og:url`,
+    //     content: mappingOgUrl(),
+    // },
+    // {
+    //     property: `og:locale`,
+    //     content: `zh_TW`,
+    // },
+    // {
+    //     property: `og:title`,
+    //     content: title,
+    // },
+    // {
+    //     property: `og:description`,
+    //     content: metaDescription,
+    // },
+    // {
+    //     property: `og:type`,
+    //     content: `website`,
+    // },
+    // {
+    //     property: `og:image`,
+    //     content: mappingOgImage(),
+    // },
+    // {
+    //     property: `og:image:width`,
+    //     content: 1200,
+    // },
+    // {
+    //     property: `og:image:height`,
+    //     content: 628,
+    // },
+
     return (
         <Helmet
             htmlAttributes={{
                 lang,
             }}
-            title={title || site.siteMetadata.title}
             titleTemplate={`%s | ${site.siteMetadata.title}`}
-            meta={[
-                {
-                    name: `viewport`,
-                    content: `user-scalable = no, width=device-width`,
-                },
-                {
-                    name: `description`,
-                    content: metaDescription,
-                },
-                // {
-                //     property: `og:url`,
-                //     content: mappingOgUrl(),
-                // },
-                {
-                    property: `og:locale`,
-                    content: `zh_TW`,
-                },
-                {
-                    property: `og:title`,
-                    content: title,
-                },
-                {
-                    property: `og:description`,
-                    content: metaDescription,
-                },
-                {
-                    property: `og:type`,
-                    content: `website`,
-                },
-                // {
-                //     property: `og:image`,
-                //     content: mappingOgImage(),
-                // },
-                {
-                    property: `og:image:width`,
-                    content: 1200,
-                },
-                {
-                    property: `og:image:height`,
-                    content: 628,
-                },
-                {
-                    name: `twitter:card`,
-                    content: `summary`,
-                },
-                {
-                    name: `twitter:creator`,
-                    content: site.siteMetadata.author,
-                },
-                {
-                    name: `twitter:title`,
-                    content: title,
-                },
-                {
-                    name: `twitter:description`,
-                    content: metaDescription,
-                },
-            ].concat(meta)}
-        />
+        >
+            <title>{title || site.siteMetadata.title}</title>
+            <meta name="viewport" content="user-scalable=no, width=device-width" />
+            <meta name="description" content={metaDescription} />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        </Helmet>
     );
 };
 

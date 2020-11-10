@@ -19,7 +19,6 @@ const BlogTemplate: React.FC = () => {
     return (
         <Layout>
             <h1>{mdx?.frontmatter?.title}</h1>
-
             <MDXRenderer>{mdx?.body}</MDXRenderer>
         </Layout>
     );
