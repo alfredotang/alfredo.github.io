@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm run check:ts && npm run clean && GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --prefix-paths",
     "develop": "npm run check:ts && gatsby develop -- --https",
-    "start": "npm run check:ts && npm run develop",
+    "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "check:ts": "tsc --noEmit"

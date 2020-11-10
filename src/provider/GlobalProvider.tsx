@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 import { localStorageUtility } from '@util';
-import { DEFAULT_THEME, ThemeMode } from '@theme';
+import { DEFAULT_THEME, ThemeMode, ThemeModeEnum } from '@theme';
 type State = {
     isLoading: boolean;
     themeMode: ThemeMode;
@@ -11,7 +11,16 @@ const initialState: State = {
     themeMode: (localStorageUtility.getItem('theme') as ThemeMode) || DEFAULT_THEME,
 };
 
-type Action = { type: 'SET_LOADING'; payload: boolean } | { type: 'SET_THEME'; payload: ThemeMode };
+type Action =
+    | { type: 'SET_LOADING'; payload: boolean }
+    | { type: 'SET_THEME'; payload: ThemeMode }
+    | { type: 'SET_NEXT_THEME' };
+
+const switchTheme = (state: State): ThemeMode => {
+    const nextTheme: ThemeMode = (ThemeModeEnum[ThemeModeEnum[state.themeMode] + 1] as ThemeMode) || DEFAULT_THEME;
+    localStorageUtility.setItem('theme', nextTheme);
+    return nextTheme;
+};
 
 const reducer = (state: State, action: Action): State => {
     switch (action.type) {
@@ -22,6 +31,11 @@ const reducer = (state: State, action: Action): State => {
             };
         case 'SET_THEME':
             return { ...state, themeMode: action.payload };
+        case 'SET_NEXT_THEME':
+            return {
+                ...state,
+                themeMode: switchTheme(state),
+            };
         default:
             throw new Error('Global reducer error');
     }

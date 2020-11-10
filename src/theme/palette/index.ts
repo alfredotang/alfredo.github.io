@@ -43,7 +43,7 @@ const dark: PaletteOptions = {
         contrastText: '#fff',
     },
     background: {
-        paper: '#191919',
+        paper: '#060606',
         default: '#060606',
     },
     text: {
@@ -71,7 +71,7 @@ const deep: PaletteOptions = {
     },
     background: {
         paper: '#191919',
-        default: '#000000',
+        default: '#191919',
     },
     text: {
         primary: '#f0f5fa',
