@@ -1,12 +1,18 @@
 import React, { useContext } from 'react';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
+import MuiContainer from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { GlobalContext } from '@provider';
-import { ThemeProvider } from '@theme';
+import { ThemeProvider, styled } from '@theme';
 import { default as SEO } from './SEO';
 import { default as GlobalStyle } from './GlobalStyle';
 import { default as Header } from './Header';
+
+const Container = styled(MuiContainer)`
+    display: flex;
+    flex-direction: column;
+    margin-top: ${(props) => props.theme.spacing(12)}px;
+    min-height: 100vh;
+`;
 
 const Layout: React.FC = ({ children }) => {
     const { state } = useContext(GlobalContext);
@@ -17,9 +23,7 @@ const Layout: React.FC = ({ children }) => {
             <CssBaseline />
             <GlobalStyle />
             <Header />
-            <Container>
-                <Box mt={8}>{children}</Box>
-            </Container>
+            <Container>{children}</Container>
         </ThemeProvider>
     );
 };
