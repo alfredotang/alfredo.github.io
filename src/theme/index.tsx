@@ -20,7 +20,18 @@ type IThemeProviderPropsProps = {
 const DEFAULT_THEME: ThemeMode = 'light';
 const createThemeMode = (themeMode: ThemeMode = DEFAULT_THEME): Theme => {
     const mode = ThemeModeEnum[ThemeModeEnum[themeMode]] || ThemeModeEnum[ThemeModeEnum[DEFAULT_THEME]];
-    return createMuiTheme({ palette: palette[mode] });
+    const theme = palette[mode];
+    return createMuiTheme({
+        palette: theme,
+        overrides: {
+            MuiAppBar: {
+                colorDefault: {
+                    backgroundColor: theme.background.default,
+                    color: theme.text.primary,
+                },
+            },
+        },
+    });
 };
 
 const ThemeProvider: React.FC<IThemeProviderPropsProps> = ({ children, themeMode }) => {

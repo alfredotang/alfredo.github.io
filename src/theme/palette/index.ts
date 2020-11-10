@@ -44,7 +44,7 @@ const dark: PaletteOptions = {
     },
     background: {
         paper: '#060606',
-        default: '#060606',
+        default: '#222639',
     },
     text: {
         primary: '#fff',
@@ -58,20 +58,20 @@ const deep: PaletteOptions = {
     type: 'dark',
     primary: {
         light: '#efe4ff',
-        main: '#bb99ff',
+        main: '#BB99FF',
         dark: '#884efc',
         contrastText: '#fff',
     },
 
     secondary: {
-        light: '#fee4ff',
-        main: '#ee99ff',
-        dark: '#e050fd',
+        light: '#f77fff',
+        main: '#EE99FF',
+        dark: '#a800b4',
         contrastText: '#fff',
     },
     background: {
         paper: '#191919',
-        default: '#191919',
+        default: '#222639',
     },
     text: {
         primary: '#f0f5fa',

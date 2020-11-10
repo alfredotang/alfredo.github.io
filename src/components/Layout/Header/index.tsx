@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'gatsby';
 import MuiAppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -8,7 +9,19 @@ import { styled } from '@theme';
 
 const AppBar = styled(MuiAppBar)`
     .title {
-        flex-grow: 1;
+        flex-basis: 25%;
+    }
+    .nav {
+        flex-basis: 65%;
+        &__link {
+            &:not(:last-child) {
+                margin-right: ${(props) => props.theme.spacing(2)}px;
+            }
+        }
+    }
+
+    .setting {
+        flex-basis: 10%;
     }
 `;
 
@@ -18,14 +31,30 @@ const Header: React.FC = () => {
         dispatch({ type: 'SET_NEXT_THEME' });
     };
     return (
-        <AppBar position="static" color="transparent" variant="outlined">
+        <AppBar position="fixed" color="default" variant="outlined">
             <Toolbar>
                 <Typography variant="overline" className="title">
                     Header
                 </Typography>
-                <Button color="secondary" variant="text" onClick={handleChangeTheme}>
-                    {state.themeMode}
-                </Button>
+
+                <nav className="nav">
+                    <Link className="nav__link" to="/">
+                        <Button variant="text" color="primary">
+                            Home
+                        </Button>
+                    </Link>
+
+                    <Link className="nav__link" to="/blog/javascript/understanding-function-invocation/">
+                        <Button variant="text" color="primary">
+                            Blog
+                        </Button>
+                    </Link>
+                </nav>
+                <div className="setting">
+                    <Button color="secondary" variant="text" onClick={handleChangeTheme}>
+                        {state.themeMode}
+                    </Button>
+                </div>
             </Toolbar>
         </AppBar>
     );
