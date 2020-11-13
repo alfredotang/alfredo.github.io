@@ -1,5 +1,13 @@
 import { PaletteOptions } from '@material-ui/core/styles/createPalette';
-import { ThemeMode } from '../index';
+
+export enum ThemeModeEnum {
+    light = 0,
+    dark = 1,
+    deep = 2,
+}
+
+export type ThemeMode = keyof typeof ThemeModeEnum;
+
 const light: PaletteOptions = {
     type: 'light',
     primary: {

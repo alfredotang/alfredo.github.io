@@ -3,15 +3,7 @@ import { createMuiTheme, ThemeProvider as MuiThemeProvider, Theme } from '@mater
 import EmotionStyled, { CreateStyled } from '@emotion/styled';
 import { css, keyframes } from '@emotion/core';
 import { useTheme, ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
-import { default as palette } from './palette';
-
-enum ThemeModeEnum {
-    light = 0,
-    dark = 1,
-    deep = 2,
-}
-
-type ThemeMode = keyof typeof ThemeModeEnum;
+import { default as palette, ThemeModeEnum, ThemeMode } from './palette';
 
 type IThemeProviderPropsProps = {
     themeMode: ThemeMode;
