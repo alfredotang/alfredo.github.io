@@ -60,5 +60,8 @@ export default {
                 configFile: `${appRootPath}/tsconfig.json`,
             },
         },
+        // codegen graphql typing for ts
+        // 需要時再打開
+        // `gatsby-plugin-graphql-codegen`,
     ],
 };
