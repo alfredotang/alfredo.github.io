@@ -5,7 +5,7 @@
  */
 import _ from 'lodash';
 import { resolve } from 'path';
-import { removeEmptyOrSlash } from '../src/util';
+import { targetPath } from '../src/util';
 
 export const onCreateNode = ({ node, getNode, actions }) => {
     const { createNodeField } = actions;
@@ -14,9 +14,7 @@ export const onCreateNode = ({ node, getNode, actions }) => {
 
     if (isReadyToBuildBlogPath) {
         // markdown 轉 html url
-        const slug = `/blog/${removeEmptyOrSlash(node.frontmatter.category)}/${removeEmptyOrSlash(
-            node.frontmatter.slug
-        )}`;
+        const slug = targetPath('blog', [node.frontmatter.category, node.frontmatter.slug]);
         createNodeField({
             node,
             name: `slug`,
@@ -88,7 +86,7 @@ export const createPages = async ({ actions, graphql, reporter }) => {
     // create tags page
     tags.forEach((tag: string) => {
         createPage({
-            path: `/tag/${removeEmptyOrSlash(tag)}/`,
+            path: targetPath('tag', [tag]),
             component: resolve(__dirname, `../src/templates/TagTemplate/index.tsx`),
             context: {
                 tag: tag,
@@ -99,7 +97,7 @@ export const createPages = async ({ actions, graphql, reporter }) => {
     // create category page
     categories.forEach((category: string) => {
         createPage({
-            path: `/blog/${removeEmptyOrSlash(category)}/`,
+            path: targetPath('category', [category]),
             component: resolve(__dirname, `../src/templates/CategoryTemplate/index.tsx`),
             context: {
                 category: category,
@@ -109,7 +107,7 @@ export const createPages = async ({ actions, graphql, reporter }) => {
 
     // create all blog page
     createPage({
-        path: `/blog/`,
+        path: targetPath('article'),
         component: resolve(__dirname, `../src/templates/ArticleTemplate/index.tsx`),
         context: {},
     });

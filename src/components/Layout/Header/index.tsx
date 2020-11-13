@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { GlobalContext } from '@provider';
 import { styled } from '@theme';
+import { targetPath } from '@util';
 
 const AppBar = styled(MuiAppBar)`
     .title {
@@ -44,7 +45,7 @@ const Header: React.FC = () => {
                         </Button>
                     </Link>
 
-                    <Link className="nav__link" to="/blog/">
+                    <Link className="nav__link" to={targetPath('article')}>
                         <Button variant="text" color="primary">
                             Blog
                         </Button>

@@ -3,9 +3,12 @@ import { graphql, Link } from 'gatsby';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Layout } from '@components';
+import { targetPath } from '@util';
+
 type IProps = {
     data: Typing.Query;
 };
+
 const TagTemplate: React.FC<IProps> = ({ data }) => {
     return (
         <Layout>
@@ -13,13 +16,13 @@ const TagTemplate: React.FC<IProps> = ({ data }) => {
                 <div key={node.id}>
                     <Typography variant="h4">{node.frontmatter.category}</Typography>
                     <div>
-                        <Link to={`${node.fields.slug}/`}>
+                        <Link to={node.fields.slug}>
                             <Button variant="contained">{node.frontmatter.title}</Button>
                         </Link>
                     </div>
                     <div>
                         {node.frontmatter.tag.map((item) => (
-                            <Link key={item} to={`/tag/${item}/`}>
+                            <Link key={item} to={targetPath('tag', [item])}>
                                 <Button variant="outlined">{node.frontmatter.tag}</Button>
                             </Link>
                         ))}
