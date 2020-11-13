@@ -44,7 +44,7 @@ const Header: React.FC = () => {
                         </Button>
                     </Link>
 
-                    <Link className="nav__link" to="/blog/javascript/understanding-function-invocation/">
+                    <Link className="nav__link" to="/blog/">
                         <Button variant="text" color="primary">
                             Blog
                         </Button>
