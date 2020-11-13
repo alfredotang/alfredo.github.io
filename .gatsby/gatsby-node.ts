@@ -110,7 +110,7 @@ export const createPages = async ({ actions, graphql, reporter }) => {
     // create all blog page
     createPage({
         path: `/blog/`,
-        component: resolve(__dirname, `../src/templates/BlogTemplate/index.tsx`),
+        component: resolve(__dirname, `../src/templates/ArticleTemplate/index.tsx`),
         context: {},
     });
 
@@ -119,7 +119,7 @@ export const createPages = async ({ actions, graphql, reporter }) => {
     result.data.allMdx.edges.forEach(({ node }) => {
         createPage({
             path: node.fields.slug,
-            component: resolve(__dirname, `../src/templates/ArticleTemplate/index.tsx`),
+            component: resolve(__dirname, `../src/templates/BlogTemplate/index.tsx`),
             context: {
                 id: node.id,
             },

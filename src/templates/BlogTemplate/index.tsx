@@ -1,21 +1,14 @@
 import React from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Layout } from '@src/components';
 
-const BlogTemplate: React.FC = () => {
-    const { mdx } = useStaticQuery(graphql`
-        query BlogPostQuery($id: String) {
-            mdx(id: { eq: $id }) {
-                id
-                body
-                frontmatter {
-                    title
-                }
-            }
-        }
-    `);
+type IProps = {
+    data: Typing.Query;
+};
+const BlogTemplate: React.FC<IProps> = ({ data }) => {
+    const { mdx } = data;
     return (
         <Layout>
             <h1>{mdx?.frontmatter?.title}</h1>
@@ -23,5 +16,17 @@ const BlogTemplate: React.FC = () => {
         </Layout>
     );
 };
-
 export default BlogTemplate;
+export const pageQuery = graphql`
+    query BlogPostQuery($id: String) {
+        mdx(id: { eq: $id }) {
+            id
+            body
+            frontmatter {
+                title
+                tag
+                category
+            }
+        }
+    }
+`;
