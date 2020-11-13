@@ -3,7 +3,7 @@ date: '20201010'
 title: 理解 Javascript 函式呼叫
 slug: 'understanding-function-invocation'
 category: 'javascript'
-tags:
+tag:
     - javascript
 published: true
 ---

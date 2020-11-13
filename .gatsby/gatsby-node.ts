@@ -14,7 +14,7 @@ export const onCreateNode = ({ node, getNode, actions }) => {
 
     if (isReadyToBuildBlogPath) {
         // markdown 轉 html url
-        const slug = `blog/${removeEmptyOrSlash(node.frontmatter.category)}/${removeEmptyOrSlash(
+        const slug = `/blog/${removeEmptyOrSlash(node.frontmatter.category)}/${removeEmptyOrSlash(
             node.frontmatter.slug
         )}`;
         createNodeField({
@@ -25,22 +25,22 @@ export const onCreateNode = ({ node, getNode, actions }) => {
     }
 };
 
-// export const onCreateWebpackConfig = ({ getConfig, stage, actions }) => {
-//     if (stage === 'build-javascript') {
-//         const { output } = getConfig();
-//         const newWebpackConfig = {
-//             ...getConfig(),
-//             output: {
-//                 filename: `js/[name]-[contenthash].js`,
-//                 chunkFilename: `js/[name]-[contenthash].js`,
-//                 path: output.path,
-//                 publicPath: output.publicPath,
-//             },
-//         };
+export const onCreateWebpackConfig = ({ getConfig, stage, actions }) => {
+    if (stage === 'build-javascript') {
+        const { output } = getConfig();
+        const newWebpackConfig = {
+            ...getConfig(),
+            output: {
+                filename: `js/[name]-[contenthash].js`,
+                chunkFilename: `js/[name]-[contenthash].js`,
+                path: output.path,
+                publicPath: output.publicPath,
+            },
+        };
 
-//         actions.replaceWebpackConfig(newWebpackConfig);
-//     }
-// };
+        actions.replaceWebpackConfig(newWebpackConfig);
+    }
+};
 
 export const createPages = async ({ actions, graphql, reporter }) => {
     const { createPage } = actions;
@@ -56,6 +56,11 @@ export const createPages = async ({ actions, graphql, reporter }) => {
                         fields {
                             slug
                         }
+                        frontmatter {
+                            title
+                            category
+                            tag
+                        }
                     }
                 }
             }
@@ -67,6 +72,12 @@ export const createPages = async ({ actions, graphql, reporter }) => {
         return;
     }
 
+    const tags = _.uniq(_.flattenDeep(result.data.allMdx.edges.map(({ node }) => node.frontmatter.tag))).filter(
+        (items) => items
+    );
+
+    const categories = _.uniq(result.data.allMdx.edges.map(({ node }) => node.frontmatter.category));
+
     // create home page
     createPage({
         path: `/`,
@@ -74,49 +85,44 @@ export const createPages = async ({ actions, graphql, reporter }) => {
         context: {},
     });
 
+    // create tags page
+    tags.forEach((tag: string) => {
+        createPage({
+            path: `/tag/${removeEmptyOrSlash(tag)}/`,
+            component: resolve(__dirname, `../src/templates/TagTemplate/index.tsx`),
+            context: {
+                tag: tag,
+            },
+        });
+    });
+
+    // create category page
+    categories.forEach((category: string) => {
+        createPage({
+            path: `/blog/${removeEmptyOrSlash(category)}/`,
+            component: resolve(__dirname, `../src/templates/CategoryTemplate/index.tsx`),
+            context: {
+                category: category,
+            },
+        });
+    });
+
     // create all blog page
-    // createPage({
-    //     path: `/blog`,
-    //     component: resolve(__dirname, `../src/templates/ArticleTemplate.tsx`),
-    //     context: {},
-    // });
+    createPage({
+        path: `/blog/`,
+        component: resolve(__dirname, `../src/templates/BlogTemplate/index.tsx`),
+        context: {},
+    });
 
     // create blog page
     // turn md to html page
     result.data.allMdx.edges.forEach(({ node }) => {
         createPage({
             path: node.fields.slug,
-            component: resolve(__dirname, `../src/templates/BlogTemplate/index.tsx`),
+            component: resolve(__dirname, `../src/templates/ArticleTemplate/index.tsx`),
             context: {
                 id: node.id,
             },
         });
     });
 };
-
-// const tags = _.uniq(
-//     _.flattenDeep(result.data.allMarkdownRemark.edges.map(({ node }) => node.frontmatter.tags))
-// ).filter((items) => items);
-// const categories = _.uniq(result.data.allMarkdownRemark.edges.map(({ node }) => node.frontmatter.category));
-
-// create tags page
-// tags.forEach((tag: string) => {
-//     createPage({
-//         path: `tags/${removeEmptyOrSlash(tag)}`,
-//         component: resolve(__dirname, `../src/templates/TagsTemplate.tsx`),
-//         context: {
-//             tag: tag,
-//         },
-//     });
-// });
-
-// create category page
-// categories.forEach((category: string) => {
-//     createPage({
-//         path: `blog/${removeEmptyOrSlash(category)}`,
-//         component: resolve(__dirname, `../src/templates/CategoriesTemplate.tsx`),
-//         context: {
-//             category: category,
-//         },
-//     });
-// });
