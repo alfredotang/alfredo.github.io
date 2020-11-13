@@ -1,5 +1,6 @@
 import { fromPairs } from 'lodash';
-import { default as removeEmptyOrSlash } from './removeEmptyOrSlash';
+import { removeEmptyOrSlash } from './stringUtility';
 import { default as localStorageUtility } from './localStorageUtility';
+import { targetPath } from './pathUtility';
 
-export { removeEmptyOrSlash, localStorageUtility };
+export { removeEmptyOrSlash, localStorageUtility, targetPath };
