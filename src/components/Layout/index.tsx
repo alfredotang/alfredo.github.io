@@ -6,6 +6,7 @@ import { ThemeProvider, styled } from '@theme';
 import { default as SEO } from './SEO';
 import { default as GlobalStyle } from './GlobalStyle';
 import { default as Header } from './Header';
+import { default as ScrollToTop } from './ScrollToTop';
 
 const Main = styled(Container)`
     display: flex;
@@ -14,14 +15,21 @@ const Main = styled(Container)`
     min-height: 100vh;
 `;
 
-const Layout: React.FC = ({ children }) => {
+type IProps = {
+    title?: string;
+    slug?: string;
+    children: React.ReactNode;
+};
+
+const Layout: React.FC<IProps> = ({ children, title }) => {
     const { state } = useContext(GlobalContext);
     const { themeMode } = state;
     return (
         <ThemeProvider themeMode={themeMode}>
-            <SEO />
+            <SEO title={title} />
             <CssBaseline />
             <GlobalStyle />
+            <ScrollToTop />
             <Header />
             <Main>{children}</Main>
         </ThemeProvider>

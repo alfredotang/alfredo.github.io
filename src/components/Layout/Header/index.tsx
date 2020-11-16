@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 import MuiAppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -27,6 +27,15 @@ const AppBar = styled(MuiAppBar)`
 `;
 
 const Header: React.FC = () => {
+    const { site } = useStaticQuery<Typing.Query>(graphql`
+        query {
+            site {
+                siteMetadata {
+                    title
+                }
+            }
+        }
+    `);
     const { state, dispatch } = useContext(GlobalContext);
     const handleChangeTheme = () => {
         dispatch({ type: 'SET_NEXT_THEME' });
@@ -34,9 +43,9 @@ const Header: React.FC = () => {
     return (
         <AppBar position="fixed" color="default" variant="outlined">
             <Toolbar>
-                <Typography variant="overline" className="title">
-                    Header
-                </Typography>
+                <Link to="/" className="title">
+                    <Typography variant="overline">{site.siteMetadata.title}</Typography>
+                </Link>
 
                 <nav className="nav">
                     <Link className="nav__link" to="/">
