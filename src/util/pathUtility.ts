@@ -8,7 +8,7 @@ export const targetPath = (target: GeneratorTarget, value?: [string, string?]): 
         case 'tag':
             return `/tag/${removeEmptyOrSlash(value[0])}/`;
         case 'category':
-            return `article`;
+            return `/blog/${value[0]}/`;
         case 'blog':
             return `/blog/${removeEmptyOrSlash(value[0])}/${removeEmptyOrSlash(value[1])}/`;
         default:

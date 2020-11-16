@@ -31,7 +31,6 @@ deploy:
     # Description: 站台從這個路徑開始
     # Default: /
     # Require: True
-    #path_prefix: techblog
     path_prefix: /
     # Description: 網站 icon
     site_icon: /
