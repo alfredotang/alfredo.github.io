@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { Layout } from '@src/components';
+import { Layout, MDXComponents } from '@src/components';
 
 type IProps = {
     data: Typing.Query;
@@ -10,9 +10,12 @@ type IProps = {
 const BlogTemplate: React.FC<IProps> = ({ data }) => {
     const { mdx } = data;
     return (
-        <Layout>
+        <Layout title={mdx?.frontmatter?.title}>
             <h1>{mdx?.frontmatter?.title}</h1>
-            <MDXRenderer>{mdx?.body}</MDXRenderer>
+            <hr />
+            <MDXProvider components={MDXComponents}>
+                <MDXRenderer>{mdx?.body}</MDXRenderer>
+            </MDXProvider>
         </Layout>
     );
 };

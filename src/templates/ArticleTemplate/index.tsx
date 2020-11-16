@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Typography from '@material-ui/core/Typography';
 import { Layout } from '@components';
 import { ArticleMaker } from '@components';
 
@@ -9,7 +8,7 @@ type IProps = {
 };
 const ArticleTemplate: React.FC<IProps> = ({ data }) => {
     return (
-        <Layout>
+        <Layout title="文章">
             <ArticleMaker data={data.allMdx.edges} />
         </Layout>
     );

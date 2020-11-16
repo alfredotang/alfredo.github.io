@@ -5,7 +5,7 @@ const Container = styled.div``;
 
 const IndexTemplate: React.FC = () => {
     return (
-        <Layout>
+        <Layout title="Home">
             <Container>home page</Container>
         </Layout>
     );
