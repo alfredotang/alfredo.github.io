@@ -18,7 +18,6 @@ export default {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         `gatsby-plugin-typescript`,
-        `gatsby-plugin-fontawesome-css`,
         // {
         //     resolve: `gatsby-plugin-manifest`,
         //     options: {
@@ -44,7 +43,22 @@ export default {
             resolve: `gatsby-plugin-mdx`,
             options: {
                 extensions: [`.mdx`, `.md`],
-                gatsbyRemarkPlugins: [`gatsby-remark-images`, `gatsby-remark-autolink-headers`],
+                gatsbyRemarkPlugins: [
+                    {
+                        resolve: `gatsby-remark-images`,
+                        options: {
+                            linkImagesToOriginal: false,
+                            wrapperStyle: `margin-top: 20px; margin-bottom: 20px`,
+                        },
+                    },
+                    `gatsby-remark-autolink-headers`,
+                    {
+                        resolve: `gatsby-remark-vscode`,
+                        options: {
+                            theme: 'Dark+ (default dark)', // Or install your favorite theme from GitHub
+                        },
+                    },
+                ],
             },
         },
         {
@@ -60,6 +74,7 @@ export default {
                 configFile: `${appRootPath}/tsconfig.json`,
             },
         },
+
         // codegen graphql typing for ts
         // 需要時再打開
         // `gatsby-plugin-graphql-codegen`,
