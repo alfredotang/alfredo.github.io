@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import { styled } from '@theme';
-import { LimitLine } from '@components';
+import { LimitLine, Tag } from '@components';
 import { targetPath } from '@util';
 
 const ArticleListRoot = styled.div`
@@ -30,7 +30,6 @@ const ArticleListRoot = styled.div`
         }
 
         &__tag {
-            text-transform: none;
             margin-right: ${(props) => props.theme.spacing(2)}px;
         }
 
@@ -69,15 +68,12 @@ const ArticleList: React.FC<IProps> = ({ data }) => {
             <div className="action-block">
                 <div className="action-block__tag-block">
                     {data.frontmatter.tag.map((item) => (
-                        <Button
+                        <Tag
                             key={item}
                             className="action-block__tag"
-                            variant="outlined"
-                            color="secondary"
                             onClick={(event) => handleRedirectToTag(event, item)}
-                        >
-                            {item}
-                        </Button>
+                            value={item}
+                        />
                     ))}
                 </div>
                 <div className="action-block__more">
