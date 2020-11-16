@@ -40,8 +40,7 @@ const MdxP = styled.p`
     /* inline code highlight */
     code {
         color: ${(props) => props.theme.palette.secondary.main};
-        background-color: ${(props) => Color(props.theme.palette.secondary.light).alpha(0.3).toString()};
-        /* border: 1px solid ${(props) => props.theme.palette.secondary.main}; */
+        background-color: ${(props) => Color(props.theme.palette.secondary.main).alpha(0.2).string()};
         border-radius: ${(props) => props.theme.shape.borderRadius}px;
         padding: ${(props) => props.theme.spacing(0.5)}px;
     }
