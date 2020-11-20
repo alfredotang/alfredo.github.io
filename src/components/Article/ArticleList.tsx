@@ -1,10 +1,10 @@
 import React from 'react';
-import { navigate, Link } from 'gatsby';
+import { navigate } from 'gatsby';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { styled } from '@theme';
-import { LimitLine, Tag } from '@components';
+import { LimitLine, Tag, ArticleTitle } from '@components';
 import { targetPath } from '@util';
 
 const ArticleListRoot = styled.div`
@@ -14,10 +14,6 @@ const ArticleListRoot = styled.div`
     padding: ${(props) => props.theme.spacing(3)}px;
     transition: 1s;
     border-bottom: 1px solid ${(props) => props.theme.palette.divider};
-
-    .title {
-        margin-bottom: ${(props) => props.theme.spacing(1)}px;
-    }
 
     .content {
         margin-bottom: ${(props) => props.theme.spacing(2)}px;
@@ -57,10 +53,8 @@ const ArticleList: React.FC<IProps> = ({ data }) => {
     };
     return (
         <ArticleListRoot onClick={(event) => handleRedirectToBlog(event)}>
-            <Typography className="title" variant="h5" color="primary">
-                {data.frontmatter.title}
-            </Typography>
-            <Typography className="content" variant="subtitle1" component="p">
+            <ArticleTitle data={data} color="primary" />
+            <Typography className="content" variant="body1" component="p">
                 <LimitLine limitLines={5} fontSize="inherit" lineHeight="1.5">
                     {data.excerpt}
                 </LimitLine>

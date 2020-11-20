@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@theme';
-import { default as ArticleList } from './ArticleList';
+import { ArticleList } from '@components';
 
 const ArticleMakerContainer = styled.div``;
 

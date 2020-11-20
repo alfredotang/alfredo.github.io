@@ -1,8 +1,9 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
+import Driver from '@material-ui/core/Divider';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { Layout, MDXComponents } from '@src/components';
+import { Layout, MDXComponents, ArticleTitle } from '@components';
 
 type IProps = {
     data: Typing.Query;
@@ -11,8 +12,8 @@ const BlogTemplate: React.FC<IProps> = ({ data }) => {
     const { mdx } = data;
     return (
         <Layout title={mdx?.frontmatter?.title}>
-            <h1>{mdx?.frontmatter?.title}</h1>
-            <hr />
+            <ArticleTitle data={mdx} variant="h4" />
+            <Driver />
             <MDXProvider components={MDXComponents}>
                 <MDXRenderer>{mdx?.body}</MDXRenderer>
             </MDXProvider>
@@ -29,6 +30,7 @@ export const pageQuery = graphql`
                 title
                 tag
                 category
+                date(formatString: "YYYY/MM/DD")
             }
         }
     }
