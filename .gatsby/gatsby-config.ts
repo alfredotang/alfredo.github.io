@@ -58,6 +58,17 @@ export default {
                             theme: 'Dark+ (default dark)', // Or install your favorite theme from GitHub
                         },
                     },
+                    {
+                        resolve: `gatsby-remark-embedder`,
+                        options: {
+                            customTransformers: [
+                                // Your custom transformers
+                            ],
+                            services: {
+                                // The service-specific options by the name of the service
+                            },
+                        },
+                    },
                 ],
             },
         },
