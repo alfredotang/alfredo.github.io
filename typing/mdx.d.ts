@@ -25,7 +25,8 @@ declare module '@mdx-js/react' {
         | 'td'
         | 'thematicBreak'
         | 'tr'
-        | 'ul';
+        | 'ul'
+        | 'iframe';
     export type Components = {
         [key in ComponentType]?: React.ComponentType<{ children: React.ReactNode }>;
     };
