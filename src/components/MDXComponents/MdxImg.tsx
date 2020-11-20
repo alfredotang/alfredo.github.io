@@ -1,10 +1,6 @@
 import React, { FC, useState, Fragment } from 'react';
 import { styled } from '@theme';
-// import { default as MdxBackdrop } from './MdxBackdrop';
 import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import CloseIcon from '@material-ui/icons/Close';
-import IconButton from '@material-ui/core/IconButton';
 
 const Img = styled.img`
     max-width: 700px;

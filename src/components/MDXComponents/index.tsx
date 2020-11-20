@@ -1,11 +1,18 @@
 import React from 'react';
 import { Components } from '@mdx-js/react';
-import { styled } from '@theme';
+import { styled, css, Theme } from '@theme';
 import Color from 'color';
 import MuiLink from '@material-ui/core/Link';
+import Divider from '@material-ui/core/Divider';
 import { default as MdxImg } from './MdxImg';
 
+const commonStyle = (theme: Theme) => css`
+    color: ${theme.palette.primary.main};
+    /* background-color: ${Color(theme.palette.primary.main).alpha(0.2).string()}; */
+`;
+
 const MdxH1 = styled.h1`
+    ${(props) => commonStyle(props.theme)};
     ${(props) => props.theme.typography.h4 as any};
     .anchor {
         display: none;
@@ -13,6 +20,7 @@ const MdxH1 = styled.h1`
 `;
 
 const MdxH2 = styled.h2`
+    ${(props) => commonStyle(props.theme)};
     ${(props) => props.theme.typography.h5 as any};
     .anchor {
         display: none;
@@ -20,6 +28,7 @@ const MdxH2 = styled.h2`
 `;
 
 const MdxH3 = styled.h3`
+    ${(props) => commonStyle(props.theme)};
     ${(props) => props.theme.typography.h6 as any};
     .anchor {
         display: none;
@@ -27,8 +36,7 @@ const MdxH3 = styled.h3`
 `;
 
 const MdxP = styled.p`
-    ${(props) => props.theme.typography.body2 as any};
-    line-height: 1.75rem;
+    ${(props) => props.theme.typography.body1 as any};
     /* Trigger img 樣式 */
     .gatsby-resp-image-background-image {
         border-radius: 10px;
@@ -47,9 +55,9 @@ const MdxP = styled.p`
 `;
 
 const MdxA = styled(MuiLink)`
-    color: ${(props) => props.theme.palette.info.main} !important;
+    color: ${(props) => props.theme.palette.secondary.main} !important;
     &:hover {
-        color: ${(props) => props.theme.palette.info.light} !important;
+        color: ${(props) => props.theme.palette.secondary.light} !important;
     }
 `;
 
@@ -76,6 +84,11 @@ const MdxBlockquote = styled.blockquote`
     margin-right: -8px;
 `;
 
+const MdxIframe = styled.iframe`
+    border: none;
+    border-radius: ${(props) => props.theme.shape.borderRadius}px;
+`;
+
 const MDXComponents: Components = {
     img: (props) => <MdxImg {...props} />,
     h1: (props) => <MdxH1 {...props} />,
@@ -85,6 +98,8 @@ const MDXComponents: Components = {
     a: (props) => <MdxA {...props} />,
     blockquote: (props) => <MdxBlockquote {...props} />,
     pre: (props) => <MdxPre {...props} />,
+    iframe: (props) => <MdxIframe {...props} />,
+    hr: (props) => <Divider {...props} />,
 };
 
 export default MDXComponents;
