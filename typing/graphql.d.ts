@@ -1328,7 +1328,7 @@ declare namespace Typing {
         headings?: Maybe<Array<Maybe<MdxHeadingMdx>>>;
         html?: Maybe<Scalars['String']>;
         mdxAST?: Maybe<Scalars['JSON']>;
-        tableOfContents?: Maybe<Scalars['JSON']>;
+        tableOfContents?: TableOfContents;
         timeToRead?: Maybe<Scalars['Int']>;
         wordCount?: Maybe<MdxWordCount>;
         fields?: Maybe<MdxFields>;
@@ -1807,6 +1807,16 @@ declare namespace Typing {
         limit?: Maybe<Scalars['Int']>;
     };
 
+    export type TableOfContentsItem = {
+        url: string;
+        title: string;
+        items?: ITableOfContentsItem[];
+    };
+
+    export type TableOfContents = {
+        items: TableOfContentsItem[];
+    };
+
     export type QueryMdxArgs = {
         rawBody?: Maybe<StringQueryOperatorInput>;
         fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
@@ -1817,7 +1827,7 @@ declare namespace Typing {
         headings?: Maybe<MdxHeadingMdxFilterListInput>;
         html?: Maybe<StringQueryOperatorInput>;
         mdxAST?: Maybe<JsonQueryOperatorInput>;
-        tableOfContents?: Maybe<JsonQueryOperatorInput>;
+        tableOfContents?: TableOfContents;
         timeToRead?: Maybe<IntQueryOperatorInput>;
         wordCount?: Maybe<MdxWordCountFilterInput>;
         fields?: Maybe<MdxFieldsFilterInput>;
