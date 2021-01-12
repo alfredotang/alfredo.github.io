@@ -22,7 +22,7 @@ arrow function 本身並沒有 arguments、this...等，隱藏的參數
 
 ---
 
-## arguments
+# arguments
 
 arguments 允許我們存取所有函式的參數，不論是否參數使是否有定義
 
@@ -89,7 +89,7 @@ function sum(a, b, c) {
 
 ---
 
-## this
+# this
 
 **this** 指的是與此函式有關聯的物件，因此通常稱他為 `function context`
 
@@ -99,7 +99,7 @@ function sum(a, b, c) {
 
 所以 **this** 指向的東西 不僅會受到函式定義的方法和位置來決定，也會受到函式呼叫的方式影響
 
-### JavaScript 中，呼叫函式的四種方式
+## JavaScript 中，呼叫函式的四種方式
 
 ex.
 
@@ -149,7 +149,7 @@ ninja2(); // undefined;
 
 ---
 
-### 以 object 的 method 呼叫
+## 以 object 的 method 呼叫
 
 ex.
 
@@ -165,7 +165,7 @@ ninja.whoAmI(); // ninja;
 
 當我們把 function 作為一個 object 的 method 呼叫時，此 object 就會成為 此 function 的 `function context (this)`
 
-### Q. why?
+# Q. why?
 
 ex.
 
@@ -181,7 +181,7 @@ obj.self; // window
 
 ---
 
-### function vs object
+## function vs object
 
 雖然呼叫是透過變數， 但 function context 仍是 window
 
@@ -234,7 +234,7 @@ ninja、ninja2 可以使用同一個 function (afu)，該 fucntion 在執行時�
 
 ---
 
-### constructor
+## constructor
 
 ex.
 
@@ -278,7 +278,7 @@ ninja2.whoAmI(); // ninja2
 函式建構器：讓我們能夠用動態字串的方式來建立函式 ex. `new Fucntion('a', 'b', 'return a + b')`
 函式建構式：建立和初始化物件實體的函式 ex. `var ninja1 = new Ninja`
 
-### Constructor 回傳值
+## Constructor 回傳值
 
 ex.
 
@@ -326,7 +326,7 @@ console.log(ninja1.isLoading === config.isLoading); // false
 
 ---
 
-### apply & call
+## apply & call
 
 若我可以自訂 `function context` 要指向哪裡，是件多美好的事情啊
 
@@ -372,7 +372,7 @@ call 則是將多個引數分開列出
 
 ---
 
-### 修復 function context 的問題 - arrow function
+## 修復 function context 的問題 - arrow function
 
 ex.
 
@@ -455,7 +455,7 @@ arrow function 無法使用 `bind` 因為他在定義後就不能再 rebind
 
 ---
 
-### 修復 function context 的問題 - bind
+## 修復 function context 的問題 - bind
 
 ex.
 
@@ -487,7 +487,7 @@ var boundFunction = button.click.bind(button);
 console.log(boundFunction !== button.click); // true
 ```
 
-### Q.React class component
+# Q.React class component
 
 ```js
 

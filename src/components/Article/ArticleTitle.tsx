@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/** @jsx jsx */
 import React, { Fragment } from 'react';
+import { css, jsx, Theme } from '@emotion/react';
 import Typography from '@material-ui/core/Typography';
 import { Variant } from '@material-ui/core/styles/createTypography';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import { css, Theme } from '@theme';
 
 type IProps = {
     data: Typing.Mdx;

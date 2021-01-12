@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
+import styled from '@emotion/styled';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { GlobalContext } from '@provider';
-import { ThemeProvider, styled } from '@theme';
+import { ThemeProvider } from '@theme';
 import { default as SEO } from './SEO';
 import { default as GlobalStyle } from './GlobalStyle';
 import { default as Header } from './Header';

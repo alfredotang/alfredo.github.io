@@ -1,6 +1,6 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import MuiButton from '@material-ui/core/Button';
-import { styled } from '@theme';
 
 const Button = styled(MuiButton)`
     text-transform: none;

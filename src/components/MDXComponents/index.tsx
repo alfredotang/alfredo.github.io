@@ -1,6 +1,7 @@
 import React from 'react';
+import styled from '@emotion/styled';
+import { css, Theme } from '@emotion/react';
 import { Components } from '@mdx-js/react';
-import { styled, css, Theme } from '@theme';
 import Color from 'color';
 import MuiLink from '@material-ui/core/Link';
 import Divider from '@material-ui/core/Divider';

@@ -1,13 +1,14 @@
-import React, { memo, useState, ReactNode, FC, Fragment } from 'react';
-import { Link, navigate } from 'gatsby';
-import Color from 'color';
+import React, { memo, useState, ReactNode, FC } from 'react';
+import { navigate } from 'gatsby';
 import { animated, useSpring } from 'react-spring';
-import { styled, css } from '@theme';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { useMeasure, usePrevious } from '@src/hook';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
 import IndeterminateCheckBoxOutlinedIcon from '@material-ui/icons/IndeterminateCheckBoxOutlined';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const Container = styled.section<{ color: string; isLast: boolean }>`
     position: relative;
@@ -28,12 +29,11 @@ const Container = styled.section<{ color: string; isLast: boolean }>`
     .content {
         will-change: transform, opacity, height;
         margin-left: 24px;
-        /* padding: 0px 0px 0px 14px; */
         overflow: hidden;
         ${(props) => {
             const color = props.color || props.theme.palette.text.primary;
             return css`
-                border-left: 1px dashed ${color};
+                border-left: 1px solid ${color};
             `;
         }};
     }
@@ -47,6 +47,7 @@ const TreeIconButton = styled(IconButton)<{ children: ReactNode }>`
         vertical-align: middle;
         opacity: ${(props) => (props.children ? 1 : 0.3)};
         margin-right: ${(props) => (props.children ? 0 : props.theme.spacing(1))}px;
+        transition: 0.5s;
     }
 `;
 
@@ -72,6 +73,7 @@ const IconBlock: FC<IIconBlockProps> = ({ isOpen, onClick, children }) => {
     return (
         <TreeIconButton onClick={() => onClick()} disabled={!children}>
             <Component className="icon" />
+            {/* <ArrowForwardIosIcon className="icon" /> */}
         </TreeIconButton>
     );
 };
@@ -94,13 +96,9 @@ const Tree = memo<IProps>((props) => {
         if (children && !href) {
             setOpen(!isOpen);
         } else {
-            if (targetBlank) {
-                window.open(href, '__blank');
-            } else {
-                if (href[0] !== '#') {
-                    const link: string = href[href.length - 1] === '/' ? href : `${href}/`;
-                    navigate(`${link}`);
-                }
+            if (href[0] !== '#') {
+                const link: string = href[href.length - 1] === '/' ? href : `${href}/`;
+                targetBlank ? window.open(link, '__blank') : navigate(link);
             }
         }
         if (typeof onClick === 'function') {
@@ -111,15 +109,9 @@ const Tree = memo<IProps>((props) => {
     return (
         <Container color={color} isLast={!children}>
             <IconBlock isOpen={isOpen} onClick={() => setOpen(!isOpen)} children={children} />
-            {href && href[0] === '#' ? (
-                <Button className="tree-item" onClick={() => handleClickItem()} href={href}>
-                    {name}
-                </Button>
-            ) : (
-                <Button className="tree-item" onClick={() => handleClickItem()}>
-                    {name}
-                </Button>
-            )}
+            <Button className="tree-item" onClick={() => handleClickItem()} href={href}>
+                {name}
+            </Button>
 
             <animated.div
                 style={{ opacity, height: isOpen && previous === isOpen ? 'auto' : height }}

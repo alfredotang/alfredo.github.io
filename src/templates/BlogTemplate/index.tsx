@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import Driver from '@material-ui/core/Divider';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { styled } from '@theme';
+import styled from '@emotion/styled';
 import { Layout, MDXComponents, ArticleTitle, TOC } from '@components';
 
 const StyledWrapper = styled.div`
@@ -18,10 +18,13 @@ const StyledWrapper = styled.div`
         ${(props) => props.theme.breakpoints.up('sm')} {
             display: flex;
             flex-direction: column;
-            /* justify-content: flex-end; */
             align-items: flex-end;
             flex-basis: 40%;
         }
+    }
+
+    .toc-content {
+        position: fixed;
     }
 `;
 
@@ -41,7 +44,7 @@ const BlogTemplate: React.FC<IProps> = ({ data }) => {
                     </MDXProvider>
                 </article>
                 <aside className="toc-block">
-                    <TOC data={mdx.tableOfContents} />
+                    <TOC data={mdx.tableOfContents} className="toc-content" />
                 </aside>
             </StyledWrapper>
         </Layout>

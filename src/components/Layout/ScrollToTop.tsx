@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
+import styled from '@emotion/styled';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Fab from '@material-ui/core/Fab';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
 import Zoom from '@material-ui/core/Zoom';
-import { styled } from '@theme';
 
 const Container = styled.div`
     position: fixed;

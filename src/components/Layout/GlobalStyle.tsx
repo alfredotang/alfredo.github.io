@@ -1,6 +1,5 @@
 import React from 'react';
-import { Global, css } from '@emotion/core';
-import { Theme } from '@theme';
+import { Global, css, Theme } from '@emotion/react';
 const GlobalStyle: React.FC = () => {
     return (
         <Global

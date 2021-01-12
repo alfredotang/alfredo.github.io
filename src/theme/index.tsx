@@ -1,8 +1,6 @@
 import React from 'react';
 import { createMuiTheme, ThemeProvider as MuiThemeProvider, Theme } from '@material-ui/core/styles';
-import EmotionStyled, { CreateStyled } from '@emotion/styled';
-import { css, keyframes } from '@emotion/core';
-import { useTheme, ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
+import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import { default as palette, ThemeModeEnum, ThemeMode } from './palette';
 
 type IThemeProviderPropsProps = {
@@ -34,17 +32,5 @@ const ThemeProvider: React.FC<IThemeProviderPropsProps> = ({ children, themeMode
         </MuiThemeProvider>
     );
 };
-const styled: CreateStyled<Theme> = EmotionStyled;
 
-export {
-    ThemeMode,
-    ThemeModeEnum,
-    ThemeProvider,
-    createThemeMode,
-    useTheme,
-    DEFAULT_THEME,
-    Theme,
-    styled,
-    css,
-    keyframes,
-};
+export { ThemeMode, ThemeModeEnum, ThemeProvider, createThemeMode, DEFAULT_THEME };

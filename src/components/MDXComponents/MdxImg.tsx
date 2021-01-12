@@ -1,5 +1,5 @@
 import React, { FC, useState, Fragment } from 'react';
-import { styled } from '@theme';
+import styled from '@emotion/styled';
 import Dialog from '@material-ui/core/Dialog';
 
 const Img = styled.img`

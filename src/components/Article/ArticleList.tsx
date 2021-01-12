@@ -1,9 +1,9 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import { navigate } from 'gatsby';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import { styled } from '@theme';
 import { LimitLine, Tag, ArticleTitle } from '@components';
 import { targetPath } from '@util';
 

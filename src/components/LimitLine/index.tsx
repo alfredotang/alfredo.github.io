@@ -1,4 +1,5 @@
-import { styled, css } from '@theme';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 interface LimitLineProps {
     fontSize: string;
